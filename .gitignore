@@ -1,0 +1,11 @@
+# Binary (built from cli-core during deploy)
+media-downloader
+*.exe
+
+# App config (contains secrets)
+config/config.php
+
+# Temp / local
+*.log
+.DS_Store
+/tmp/

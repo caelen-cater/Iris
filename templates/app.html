@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="theme-color" content="#0a0a0f">
+    <title>Iris</title>
+    <?php $v = substr(md5(filemtime(PUBLIC_ROOT . '/assets/css/app.css') ?: time()), 0, 8); ?>
+    <link rel="stylesheet" href="assets/css/app.css?v=<?= $v ?>">
+</head>
+<body>
+    <div id="nav-container"></div>
+    <div id="app" class="main">
+        <div class="loading"><div class="spinner"></div></div>
+    </div>
+    <div class="toast-container" id="toast-container"></div>
+    <div id="modal-root"></div>
+
+    <?php $jv = substr(md5(time()), 0, 8); ?>
+    <script src="assets/js/app.js?v=<?= $jv ?>"></script>
+    <script src="assets/js/profiles.js?v=<?= $jv ?>"></script>
+    <script src="assets/js/browse.js?v=<?= $jv ?>"></script>
+    <script src="assets/js/media.js?v=<?= $jv ?>"></script>
+    <script src="assets/js/player.js?v=<?= $jv ?>"></script>
+    <script src="assets/js/admin.js?v=<?= $jv ?>"></script>
+    <script>App.init();</script>
+</body>
+</html>
