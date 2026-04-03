@@ -112,14 +112,11 @@ function handle_start(): void {
     }
 
     $db = get_db();
-    $configFile = APP_ROOT . '/config/config.php';
-    if (file_exists($configFile)) require_once $configFile;
-
     $settings = get_cli_settings();
 
     // For a full season download (no episode specified), fetch episode list from TMDB and queue each
     if ($data['media_type'] === 'tv' && !empty($data['season']) && empty($data['episode'])) {
-        $key = defined('TMDB_API_KEY') ? TMDB_API_KEY : '';
+        $key = get_setting($db, 'tmdb_api_key', '');
         $seasonNum = intval($data['season']);
         $url = "https://api.themoviedb.org/3/tv/{$data['tmdb_id']}/season/{$seasonNum}";
         $ch = curl_init($url);

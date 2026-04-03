@@ -48,14 +48,12 @@ switch ($action) {
 }
 
 function tmdb_request(string $path, array $params = []): array {
-    $configFile = APP_ROOT . '/config/config.php';
-    if (file_exists($configFile)) require_once $configFile;
-
     if (get_maturity() !== 'adult') {
         $params['include_adult'] = 'false';
     }
 
-    $key = defined('TMDB_API_KEY') ? TMDB_API_KEY : '';
+    $db = get_db();
+    $key = get_setting($db, 'tmdb_api_key', '');
     $url = 'https://api.themoviedb.org/3' . $path;
     if ($params) $url .= '?' . http_build_query($params);
 

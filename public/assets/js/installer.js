@@ -174,6 +174,11 @@ const Installer = {
                 <h2>Media Settings</h2>
                 <p class="subtitle">Configure how media is discovered and downloaded</p>
                 <div class="form-group">
+                    <label>TMDB API Key <span style="color:var(--accent)">*</span></label>
+                    <input type="text" id="tmdb_api_key" placeholder="TMDB v4 Read Access Token">
+                    <p style="font-size:0.75rem;color:var(--text-muted);margin-top:0.25rem">Get one at <a href="https://www.themoviedb.org/settings/api" target="_blank" style="color:var(--accent)">themoviedb.org/settings/api</a></p>
+                </div>
+                <div class="form-group">
                     <label>Real-Debrid API Key <span style="color:var(--accent)">*</span></label>
                     <input type="text" id="rd_key" placeholder="Your Real-Debrid API key">
                 </div>
@@ -276,6 +281,9 @@ const Installer = {
         if (pw !== this.field('admin_password2')) {
             return this.showError('media-error', 'Passwords do not match (go back and fix)');
         }
+        if (!this.field('tmdb_api_key')) {
+            return this.showError('media-error', 'TMDB API key is required');
+        }
         if (!this.field('rd_key') || !this.field('service_url')) {
             return this.showError('media-error', 'RD key and Service URL are required');
         }
@@ -292,6 +300,7 @@ const Installer = {
                 db_pass: this.field('db_pass'),
                 admin_username: this.field('admin_username', 'admin'),
                 admin_password: pw,
+                tmdb_api_key: this.field('tmdb_api_key'),
                 rd_key: this.field('rd_key'),
                 service_url: this.field('service_url'),
                 download_dir: this.field('download_dir', '/media'),

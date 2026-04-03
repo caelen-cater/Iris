@@ -359,6 +359,10 @@ const Admin = {
                             <input type="text" id="set-site_name" value="${s.site_name || 'Iris'}">
                         </div>
                         <div class="form-group">
+                            <label>TMDB API Key</label>
+                            <input type="password" id="set-tmdb_api_key" value="${s.tmdb_api_key || ''}">
+                        </div>
+                        <div class="form-group">
                             <label>Real-Debrid Key</label>
                             <input type="password" id="set-rd_key" value="${s.rd_key || ''}">
                         </div>
@@ -460,7 +464,7 @@ const Admin = {
     },
 
     async saveSettings() {
-        const fields = ['site_name', 'rd_key', 'service_url', 'quality_default', 'movies_dir', 'tv_dir', 'proxy'];
+        const fields = ['site_name', 'tmdb_api_key', 'rd_key', 'service_url', 'quality_default', 'movies_dir', 'tv_dir', 'proxy'];
         const data = {};
         fields.forEach(f => { const el = document.getElementById('set-' + f); if (el) data[f] = el.value; });
 

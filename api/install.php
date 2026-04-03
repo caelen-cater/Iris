@@ -101,6 +101,7 @@ function handle_install(): void {
         'sftp_pass' => $data['sftp_pass'] ?? '',
         'sftp_path' => $data['sftp_path'] ?? '',
         'site_name' => $data['site_name'] ?? 'Iris',
+        'tmdb_api_key' => $data['tmdb_api_key'] ?? '',
         'installed' => '1',
     ];
 
@@ -125,7 +126,6 @@ function handle_install(): void {
     $config .= "define('DB_USER', " . var_export($data['db_user'], true) . ");\n";
     $config .= "define('DB_PASS', " . var_export($data['db_pass'] ?? '', true) . ");\n";
     $config .= "define('BINARY_PATH', " . var_export($binaryPath, true) . ");\n";
-    $config .= "define('TMDB_API_KEY', 'eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJhNTAwMDQ5ZjNlMDYxMDlmZTNlODI4OWIwNmNmNTY4NSIsInN1YiI6IjY1ZTEyNDAyMmQ1MzFhMDE4NWMwZjJmNSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.1J3EfnfmpJyZ4MV66eadk3h929zdeZfvjTO2JXhboWw');\n";
 
     $configPath = APP_ROOT . '/config/config.php';
     if (file_put_contents($configPath, $config) === false) {

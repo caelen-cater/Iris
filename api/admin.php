@@ -209,7 +209,7 @@ function handle_save_settings(): void {
     if (empty($data)) json_error('No settings provided');
 
     $db = get_db();
-    $allowed = ['rd_key', 'service_url', 'movies_dir', 'tv_dir', 'quality_default', 'proxy', 'sftp_host', 'sftp_port', 'sftp_user', 'sftp_pass', 'sftp_path', 'site_name', 'auth_mode', 'ip_blocking_enabled', 'max_login_attempts', 'lockout_duration_minutes'];
+    $allowed = ['rd_key', 'service_url', 'movies_dir', 'tv_dir', 'quality_default', 'proxy', 'sftp_host', 'sftp_port', 'sftp_user', 'sftp_pass', 'sftp_path', 'site_name', 'tmdb_api_key', 'auth_mode', 'ip_blocking_enabled', 'max_login_attempts', 'lockout_duration_minutes'];
 
     $stmt = $db->prepare('INSERT INTO settings (key_name, value_data) VALUES (?, ?) ON DUPLICATE KEY UPDATE value_data = VALUES(value_data)');
     foreach ($data as $key => $value) {
