@@ -9,7 +9,7 @@ import (
 
 const (
 	baseURL = "https://api.themoviedb.org/3"
-	apiKey  = "eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJhNTAwMDQ5ZjNlMDYxMDlmZTNlODI4OWIwNmNmNTY4NSIsInN1YiI6IjY1ZTEyNDAyMmQ1MzFhMDE4NWMwZjJmNSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.1J3EfnfmpJyZ4MV66eadk3h929zdeZfvjTO2JXhboWw"
+	apiKey  = "YOUR_API_KEY"
 )
 
 type Client struct {
